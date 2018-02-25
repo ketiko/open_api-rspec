@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenApi
   module RSpec
     module SharedExamples
@@ -46,8 +48,6 @@ module OpenApi
         it 'matches an allowed http response status' do
           expect(schema_parser.schema_for_url_and_request_method_and_response_status).not_to be_nil
         end
-
-        # rubocop:disable RSpec/ExampleLength
         it 'matches the response schema' do
           response_schema = schema_parser.schema_for_url_and_request_method_and_response_status
           results = if response_schema[:schema]
@@ -62,7 +62,6 @@ module OpenApi
 
           expect(results).to be_truthy
         end
-        # rubocop:enable RSpec/ExampleLength
       end
     end
   end

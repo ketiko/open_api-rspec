@@ -1,22 +1,17 @@
+# frozen_string_literal: true
+
 module OpenApi
   module RSpec
-    # :reek:TooManyMethods
-    # rubocop:disable Metrics/ClassLength
     class SchemaParser
       attr_reader :openapi_schema, :request, :response, :schema_for_url
-      UUID_REGEX = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'.freeze
+      UUID_REGEX = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
 
-      # rubocop:disable Metrics/MethodLength
-      # rubocop:disable Metrics/CyclomaticComplexity
-      # rubocop:disable Metrics/PerceivedComplexity
-      # rubocop:disable Metrics/AbcSize
-      # rubocop:disable Metrics/BlockNesting
       def initialize(openapi_schema, request, response)
         @openapi_schema = openapi_schema
         @request = request
         @response = response
 
-        url = request.path.gsub(@openapi_schema['basePath'], ''.freeze)
+        url = request.path.gsub(@openapi_schema['basePath'], '')
         url_fragments = url.split('/')
 
         @openapi_schema['paths'].each do |path, meta|
@@ -37,7 +32,9 @@ module OpenApi
                 mismatch = true
                 break
               end
-              openapi_path_params = openapi_params.select { |path_param| path_param['in'].to_s == 'path' }
+              openapi_path_params = openapi_params.select do |path_param|
+                path_param['in'].to_s == 'path'
+              end
               unless openapi_path_params
                 mismatch = true
                 break
@@ -57,10 +54,10 @@ module OpenApi
                   end
                 when 'string'
                   if (url_fragments[i] =~ /#{UUID_REGEX}/) != 0 &&
-                      (url_fragments[i] =~ /[a-zA-Z]+/) != 0
+                     (url_fragments[i] =~ /[a-zA-Z]+/) != 0
 
-                      mismatch = true
-                      break
+                    mismatch = true
+                    break
                   else
                     @request_path_params[a.delete('{').delete('}')] = url_fragments[i]
                     next
@@ -86,11 +83,6 @@ module OpenApi
           break
         end
       end
-      # rubocop:enable Metrics/BlockNesting
-      # rubocop:enable Metrics/AbcSize
-      # rubocop:enable Metrics/PerceivedComplexity
-      # rubocop:enable Metrics/CyclomaticComplexity
-      # rubocop:enable Metrics/MethodLength
 
       def has_documented_param_in_openapi_url_fragments(fragment)
         (fragment =~ /^{.+}$/) == 0
@@ -234,6 +226,5 @@ module OpenApi
         end
       end
     end
-    # rubocop:enable Metrics/ClassLength
   end
 end

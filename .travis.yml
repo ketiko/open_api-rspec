@@ -1,0 +1,9 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.5.0
+before_install: gem install bundler -v 1.16.1
+before_script:
+  - bin/lois bundler-audit -c travis -g $GITHUB_CREDENTIALS
+  - bin/lois rubocop -c travis -g $GITHUB_CREDENTIALS
+  - bin/lois reek -c travis -g $GITHUB_CREDENTIALS

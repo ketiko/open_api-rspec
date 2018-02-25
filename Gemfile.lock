@@ -3,6 +3,7 @@ PATH
   specs:
     open_api-rspec (0.1.0)
       open_api-schema_validator
+      rspec
 
 GEM
   remote: https://rubygems.org/
@@ -23,8 +24,10 @@ GEM
     bundler-audit (0.6.0)
       bundler (~> 1.2)
       thor (~> 0.18)
+    byebug (10.0.0)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
+    coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.5)
@@ -50,6 +53,7 @@ GEM
       rubocop
       simplecov
       thor
+    method_source (0.9.0)
     minitest (5.11.3)
     multi_xml (0.6.0)
     open_api-schema_validator (0.1.0)
@@ -58,6 +62,12 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     powerpack (0.1.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
     public_suffix (3.0.2)
     rainbow (2.2.2)
       rake
@@ -112,9 +122,9 @@ DEPENDENCIES
   bundler
   lois
   open_api-rspec!
+  pry-byebug
   rake
   reek
-  rspec
   rubocop
   rubocop-rspec
   simplecov

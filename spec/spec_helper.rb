@@ -4,10 +4,12 @@ require 'bundler/setup'
 
 if ENV['COVERAGE']
   require 'simplecov'
-  SimpleCov.start
+  SimpleCov.start do
+    add_filter %r{spec.rb$}
+  end
   SimpleCov.at_exit do
     if ENV['CI']
-      min = 26
+      min = 59
       actual = SimpleCov.result.covered_percent
       system("lois simplecov -c travis -g $GITHUB_CREDENTIALS -m #{min} -a #{actual}")
     end

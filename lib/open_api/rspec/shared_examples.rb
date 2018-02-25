@@ -50,11 +50,11 @@ module OpenApi
         end
         it 'matches the response schema' do
           response_schema = schema_parser.schema_for_url_and_request_method_and_response_status
-          results = if response_schema[:schema]
+          results = if response_schema['schema']
                       ::OpenApi::SchemaValidator.validate_schema!(
                         schema_hash,
                         ::JSON.parse(response.body),
-                        fragment: response_schema[:schema][:$ref]
+                        fragment: response_schema['schema']['$ref']
                       )
                     else
                       response_schema

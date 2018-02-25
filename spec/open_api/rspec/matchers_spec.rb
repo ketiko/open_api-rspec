@@ -20,7 +20,7 @@ RSpec.describe OpenApi::RSpec::Matchers do
   end
 
   describe 'match_openapi_response_schema' do
-      let(:open_api_json) { JSON.parse(File.read('./spec/fixtures/petstore.json')) }
+    let(:open_api_json) { JSON.parse(File.read('./spec/fixtures/petstore.json')) }
 
     context 'when valid' do
       subject { pet_response }

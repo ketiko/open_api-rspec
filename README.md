@@ -20,6 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
+Add a file with the following:
+
+```ruby
+#file: spec/support/openapi_schema.rb
+
+RSpec.shared_context "Shared OpenAPI JSON" do
+  let(:open_api_json) { '{my open api json schema'} }
+end
+
+RSpec.configure do |rspec|
+  rspec.include_context "Shared OpenAPI JSON", type: :request
+  rspec.include_context "Shared OpenAPI JSON", type: :controller
+end
+```
+
 Test if your swagger.json endpoint is a valid schema.
 
 ```ruby
@@ -69,20 +84,6 @@ RSpec.describe UsersController, type: :request do
     it { expect(response).to match_openapi_response_schema :User }
     it_behaves_like :an_openapi_endpoint
   end
-end
-```
-
-Note for the endpoint matcher to work you must declare something like the following:
-
-```ruby
-#file: spec/support/openapi_schema.rb
-
-RSpec.shared_context "Shared OpenAPI JSON" do
-  let(:open_api_json) { '{my open api json schema'} }
-end
-
-RSpec.configure do |rspec|
-  rspec.include_context "Shared OpenAPI JSON", type: :request
 end
 ```
 

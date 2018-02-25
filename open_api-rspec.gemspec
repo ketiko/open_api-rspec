@@ -28,7 +28,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'actionpack'
 
   spec.add_dependency 'rspec'
   spec.add_dependency 'open_api-schema_validator'
+  spec.add_dependency 'activesupport'
 end

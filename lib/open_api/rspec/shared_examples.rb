@@ -5,7 +5,7 @@ module OpenApi
     module SharedExamples
       ::RSpec.shared_examples_for :an_openapi_endpoint do
         let(:schema_hash) { ::JSON.parse(open_api_json) }
-        let(:schema_parser) { SchemaParser.new(schema_hash, request, response) }
+        let(:schema_parser) { OpenApi::RSpec::SchemaParser.new(schema_hash, request, response) }
 
         it 'has openapi documentation for url' do
           expect(schema_parser.schema_for_url).not_to be_nil

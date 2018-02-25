@@ -5,7 +5,7 @@ require "open_api/rspec/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "open_api-rspec"
-  spec.version       = OpenApi::Rspec::VERSION
+  spec.version       = OpenApi::RSpec::VERSION
   spec.authors       = ["Ryan Hansen"]
   spec.email         = ["ketiko@gmail.com"]
 

@@ -1,4 +1,4 @@
-# OpenApi::Rspec [![Build Status](https://travis-ci.org/ketiko/open_api-rspec.svg?branch=master)](https://travis-ci.org/ketiko/open_api-rspec)
+# OpenApi::RSpec [![Build Status](https://travis-ci.org/ketiko/open_api-rspec.svg?branch=master)](https://travis-ci.org/ketiko/open_api-rspec)
 
 RSpec matchers and shared examples for OpenApi
 

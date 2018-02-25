@@ -4,10 +4,10 @@ require 'rspec'
 require 'open_api/schema_validator'
 require 'open_api/rspec/version'
 require 'open_api/rspec/schema_parser'
-require 'open_api/rspec/matchers/open_api'
-require 'open_api/rspec/shared_examples/open_api'
+require 'open_api/rspec/matchers'
+require 'open_api/rspec/shared_examples'
 
 module OpenApi
-  module Rspec
+  module RSpec
   end
 end

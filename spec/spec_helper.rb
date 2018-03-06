@@ -5,7 +5,7 @@ require 'bundler/setup'
 if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start do
-    add_filter %r{spec.rb$}
+    add_filter /spec.rb$/
   end
   SimpleCov.at_exit do
     if ENV['CI']

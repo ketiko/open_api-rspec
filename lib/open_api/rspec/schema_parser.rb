@@ -4,7 +4,6 @@ module OpenApi
   module RSpec
     class SchemaParser
       attr_reader :openapi_schema, :request, :response, :schema_for_url
-      UUID_REGEX = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
 
       def initialize(openapi_schema, request, response)
         @openapi_schema = openapi_schema
@@ -53,15 +52,8 @@ module OpenApi
                     next
                   end
                 when 'string'
-                  if (url_fragments[i] =~ /#{UUID_REGEX}/) != 0 &&
-                     (url_fragments[i] =~ /[a-zA-Z]+/) != 0
-
-                    mismatch = true
-                    break
-                  else
-                    @request_path_params[a.delete('{').delete('}')] = url_fragments[i]
-                    next
-                  end
+                  @request_path_params[a.delete('{').delete('}')] = url_fragments[i]
+                  next
                 else
                   mismatch = true
                   break

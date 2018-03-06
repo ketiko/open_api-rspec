@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe OpenApi::RSpec::Matchers do
@@ -12,9 +14,9 @@ RSpec.describe OpenApi::RSpec::Matchers do
       subject(:invalid_json) { File.read('./spec/fixtures/invalid.json') }
 
       it 'raises an error' do
-        expect {
+        expect do
           is_expected.not_to be_valid_openapi_schema
-        }.to raise_error(JSON::Schema::ValidationError)
+        end.to raise_error(JSON::Schema::ValidationError)
       end
     end
   end
@@ -45,9 +47,9 @@ RSpec.describe OpenApi::RSpec::Matchers do
       end
 
       it 'raises an error' do
-        expect {
+        expect do
           is_expected.not_to match_openapi_response_schema :Pet
-        }.to raise_error(JSON::Schema::ValidationError)
+        end.to raise_error(JSON::Schema::ValidationError)
       end
     end
   end

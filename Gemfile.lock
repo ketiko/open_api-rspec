@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    open_api-rspec (0.1.6)
+    open_api-rspec (0.1.7)
       activesupport
       open_api-schema_validator
       rspec

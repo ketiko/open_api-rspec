@@ -18,7 +18,7 @@ Metrics/AbcSize:
 # Offense count: 6
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/BlockLength:
-  Max: 56
+  Max: 73
 
 # Offense count: 1
 # Configuration parameters: CountBlocks.
@@ -28,7 +28,7 @@ Metrics/BlockNesting:
 # Offense count: 1
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
-  Max: 183
+  Max: 192
 
 # Offense count: 1
 Metrics/CyclomaticComplexity:
@@ -67,3 +67,6 @@ Style/NumericPredicate:
   Exclude:
     - 'spec/**/*'
     - 'lib/open_api/rspec/schema_parser.rb'
+
+RSpec/SharedExamples:
+  Enabled: false

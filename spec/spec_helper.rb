@@ -9,7 +9,7 @@ if ENV['COVERAGE']
   end
   SimpleCov.at_exit do
     if ENV['CI']
-      min = 59
+      min = 58
       actual = SimpleCov.result.covered_percent
       system("lois simplecov -c travis -g $GITHUB_CREDENTIALS -m #{min} -a #{actual}")
     end

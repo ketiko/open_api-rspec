@@ -138,23 +138,19 @@ module OpenApi
       end
 
       def openapi_form_data_params
-        schema_for_url_and_request_method_form_data_parameters.flat_map do |p|
-          if p['schema'].present?
-            keys = p['schema']['properties'].flat_map do |k, v|
-              deep_body_keys(k, v)
-            end
-            keys.map { |key| "#{p['name']}##{key}" }
-          else
-            p['name'].to_s
-          end
-        end
+        schema_for_url_and_request_method_form_data_parameters.map { |p| p['name'].to_s }
       end
 
       def openapi_body_params
         schema_for_url_and_request_method_body_parameters.flat_map do |p|
           if p['schema'].present?
-            scheme = p['schema']['$ref'].tr('/', ' ')[2..-1].strip.split.map(&:to_s)
-            body = @openapi_schema.dig(*scheme)
+            body = if p['schema']['$ref']
+                     scheme = p['schema']['$ref'].tr('/', ' ')[2..-1].strip.split.map(&:to_s)
+                     @openapi_schema.dig(*scheme)
+                   else
+                     p['schema']
+                   end
+
             body['properties'].flat_map do |k, v|
               deep_body_keys(k, v)
             end

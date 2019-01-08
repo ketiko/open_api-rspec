@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    open_api-rspec (0.1.7)
+    open_api-rspec (0.1.8)
       activesupport
-      open_api-schema_validator
+      open_api-schema_validator (>= 0.1.1)
       rspec
 
 GEM
@@ -85,7 +85,7 @@ GEM
     multi_xml (0.6.0)
     nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
-    open_api-schema_validator (0.1.0)
+    open_api-schema_validator (0.1.1)
       json-schema
     parallel (1.12.1)
     parser (2.5.3.0)

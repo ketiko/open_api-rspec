@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'actionpack'
 
   spec.add_dependency 'rspec'
-  spec.add_dependency 'open_api-schema_validator'
+  spec.add_dependency 'open_api-schema_validator', '>= 0.1.1'
   spec.add_dependency 'activesupport'
 end

@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe OpenApi::RSpec::Matchers do
   describe 'be_valid_openapi_schema' do
     context 'when valid' do
-      subject(:valid_json) { File.read('./spec/fixtures/petstore.json') }
+      subject { File.read('./spec/fixtures/petstore.json') }
 
       it { is_expected.to be_valid_openapi_schema }
     end
@@ -15,7 +15,7 @@ RSpec.describe OpenApi::RSpec::Matchers do
 
       it 'raises an error' do
         expect do
-          is_expected.not_to be_valid_openapi_schema
+          expect(invalid_json).not_to be_valid_openapi_schema
         end.to raise_error(JSON::Schema::ValidationError)
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe OpenApi::RSpec::Matchers do
     end
 
     context 'when invalid' do
-      subject { pet_response }
+      subject(:invalid_response) { pet_response }
 
       let(:pet_response) do
         {
@@ -48,7 +48,7 @@ RSpec.describe OpenApi::RSpec::Matchers do
 
       it 'raises an error' do
         expect do
-          is_expected.not_to match_openapi_response_schema :Pet
+          expect(invalid_response).not_to match_openapi_response_schema :Pet
         end.to raise_error(JSON::Schema::ValidationError)
       end
     end

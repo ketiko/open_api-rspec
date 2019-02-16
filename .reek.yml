@@ -12,10 +12,11 @@ detectors:
     exclude:
     - OpenApi::RSpec::SchemaParser#deep_body_keys
     - OpenApi::RSpec::SchemaParser#get_deep_keys
+    - OpenApi::RSpec::SchemaParser#openapi_body_params
+    - OpenApi::RSpec::SchemaParser#openapi_form_data_params
     - OpenApi::RSpec::SchemaParser#openapi_required_form_data_params
     - OpenApi::RSpec::SchemaParser#openapi_required_path_params
     - OpenApi::RSpec::SchemaParser#openapi_required_query_string_params
-    - OpenApi::RSpec::SchemaParser#openapi_form_data_params
   NestedIterators:
     exclude:
     - OpenApi::RSpec::SchemaParser#deep_body_keys

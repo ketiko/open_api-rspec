@@ -151,8 +151,20 @@ module OpenApi
                      p['schema']
                    end
 
-            body['properties'].flat_map do |k, v|
-              deep_body_keys(k, v)
+            if body['allOf']
+              scheme = body['allOf'].first['$ref'].tr('/', ' ')[2..-1].strip.split.map(&:to_s)
+              all_of_schema_properties = @openapi_schema.dig(*scheme)
+              scheme_props = all_of_schema_properties['properties'].flat_map do |k, v|
+                deep_body_keys(k, v)
+              end
+              additional_props = body['allOf'].last['properties'].flat_map do |k, v|
+                deep_body_keys(k, v)
+              end
+              scheme_props + additional_props
+            else
+              body['properties'].flat_map do |k, v|
+                deep_body_keys(k, v)
+              end
             end
           else
             p['name'].to_s
